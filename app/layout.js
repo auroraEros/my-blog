@@ -1,6 +1,7 @@
 // import vazirFont from "@/app/_consts/fonts";
 import localFont from "next/font/local";
 import "./_styles/globals.css";
+import Header from "@/app/_components/Header";
 
 const vazirFont = localFont({
   src: [
@@ -35,11 +36,22 @@ const vazirFont = localFont({
   display: "block",
 });
 
-export default function RootLayout({ children }) {
+export const metadata = {
+  title: {
+    template: "%s | بلااگ اپ",
+    default: "بلاگ اپ", // a default is required when creating a template
+  },
+  description: "وب اپلیکیشن مدیریت بلاگ ها و نظرات کاربران",
+ 
+};
 
+export default function RootLayout({ children }) {
   return (
-    <html lang="fa" dir="rtl">
-      <body className={`${vazirFont.variable} font-sans`}>{children}</body>
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
+      <body className={`${vazirFont.variable} font-sans min-h-screen`}>
+        <Header />
+        <main className="container xl:max-w-screen-xl">{children}</main>
+      </body>
     </html>
   );
 }
