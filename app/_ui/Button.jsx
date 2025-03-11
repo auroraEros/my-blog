@@ -1,13 +1,23 @@
-"use client"
 const btnType = {
   primary: "btn--primary",
   secondary: "btn--secondary",
   outline: "btn--outline",
   danger: "btn--danger",
 };
-function Button({ handleClick, type="primary", className, children ,...rest}) {
+
+function Button({
+  children,
+  onClick,
+  variant = "primary",
+  className = "",
+  ...rest
+}) {
   return (
-    <button onClick={handleClick} type={btnType[type]} className={className} {...rest}>
+    <button
+      onClick={onClick}
+      className={`btn ${btnType[variant]} ${className}`}
+      {...rest}
+    >
       {children}
     </button>
   );
