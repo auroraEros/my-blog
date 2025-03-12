@@ -1,20 +1,31 @@
 "use client";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { searchPosts } from "@/app/_lib/actions";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function Search() {
-  const {searchParams}=useSearchParams();
-  const query = searchParams?.search || "";
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const search = e.target.search;
+    const searchValue = search.value;
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    if (searchValue) {
+      newParams.set("search", searchValue);
+    } else newParams.delete("search");
+    router.push(`${pathname}?${newParams.toString()}`, { scroll: false });
+  }
   return (
-    <form action={searchPosts}  className="relative">
+    <form onSubmit={handleSubmit} className="relative">
       <input
-        key={query}
         type="text"
         name="search"
         placeholder="جستجو ..."
         autoComplete="off"
-        defaultValue={query}
         className="textField__input py-3 text-xs bg-secondary-0"
       />
       <button

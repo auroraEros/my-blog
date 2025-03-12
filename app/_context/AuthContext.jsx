@@ -56,7 +56,7 @@ export default function AuthProvider({ children }) {
   async function signin(values) {
     dispatch({ type: "loading" });
     try {
-      const { user, message } = await singinApi(values);
+      const { user, message } = await signinApi(values);
       dispatch({ type: "signin", payload: user });
       toast.success(message);
       router.push("/profile");

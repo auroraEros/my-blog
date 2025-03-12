@@ -1,4 +1,3 @@
-
 /////////////
 // GET
 
@@ -15,9 +14,12 @@ export async function getCategories() {
   }
 }
 
-export async function getPosts() {
+export async function getPosts(queries, option) {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/post/list`);
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/post/list?${queries}`,
+      option
+    );
     if (!res.ok) throw new Error("Couldn't get posts");
     const data = await res.json();
     return data;

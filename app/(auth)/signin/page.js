@@ -6,8 +6,7 @@ import Link from "next/link";
 
 import RHFTextField from "@/app/_ui/RHFTextField";
 import Button from "@/app/_ui/Button";
-import { signinApi } from "@/app/_lib/authService";
-import toast from "react-hot-toast";
+
 import { useAuth } from "@/app/_context/AuthContext";
 
 const schema = yup.object({
@@ -33,7 +32,7 @@ function Page() {
 
   async function onSubmit(values) {
     await signin(values);
-    reset();
+    // reset();
   }
   return (
     <div>

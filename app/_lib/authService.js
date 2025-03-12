@@ -1,7 +1,7 @@
 import http from "./httpService";
 
 export async function signupApi(data) {
-  return http.post("/user/signup", data).then(({ data }) => data.data) ;
+  return http.post("/user/signup", data).then(({ data }) => data.data);
 }
 
 export async function signinApi(data) {
@@ -12,3 +12,12 @@ export async function getUserApi() {
   return http.get("/user/profile").then(({ data }) => data.data);
 }
 
+export async function likePostApi(postId) {
+  return await http.post(`/post/like/${postId}`).then(({ data }) => data.data);
+}
+
+export async function bookmarkPostApi(postId) {
+  return await http
+    .post(`/post/bookmark/${postId}`)
+    .then(({ data }) => data.data);
+}

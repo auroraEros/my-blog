@@ -12,8 +12,31 @@ import {
 
 import ButtonIcon from "@/app/_ui/ButtonIcon";
 import { toPersianDigits } from "@/app/_utils/persianDigitsFormater";
+import { bookmarkPostApi, likePostApi } from "../_lib/authService";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 function PostInteractions({ post }) {
+  const router = useRouter();
+  async function likeHandler(postId) {
+    try {
+      const { message } = await likePostApi(postId);
+      toast.success(message);
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+    router.refresh();
+  }
+
+  async function bookmarkHandler(postId) {
+    try {
+      const { message } = await bookmarkPostApi(postId);
+      toast.success(message);
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+    router.refresh();
+  }
   return (
     <div className="flex items-center gap-x-4">
       <ButtonIcon variant="secondary">
