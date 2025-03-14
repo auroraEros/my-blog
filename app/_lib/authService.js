@@ -10,6 +10,12 @@ export async function signinApi(data) {
 
 export async function getUserApi() {
   return http.get("/user/profile").then(({ data }) => data.data);
+  
+}
+
+export async function getAllUsersApi(options={}) {
+  return http.get("/user/list", options).then(({ data }) => data.data);
+
 }
 
 export async function likePostApi(postId) {

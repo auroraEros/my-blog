@@ -1,6 +1,6 @@
 import PostCard from "@/app/_components/PostCard";
 import PostList from "@/app/_components/PostList";
-import { getPostBySlug, getPosts } from "@/app/_lib/data-service";
+import { getPostBySlug, getPosts } from "@/app/_lib/postService";
 import { toPersianDigits } from "@/app/_utils/persianDigitsFormater";
 import queryString from "query-string";
 

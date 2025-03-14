@@ -1,6 +1,6 @@
 import PostComment from "@/app/_components/PostComment";
 import RelatedPost from "@/app/_components/RelatedPost";
-import { getPostBySlug, getPosts } from "@/app/_lib/data-service";
+import { getPostBySlug, getPosts } from "@/app/_lib/postService";
 import Image from "next/image";
 
 export async function generateStaticParams() {
@@ -12,8 +12,9 @@ export async function generateStaticParams() {
 }
 
 async function Page({ params }) {
-  const post = await getPostBySlug(params.slug);
-  console.log(post);
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+
   return (
     <div className="text-secondary-600 max-w-screen-md mx-auto">
       <h1 className="text-secondary-700 text-2xl font-bold mb-8">

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCategories } from "@/app/_lib/data-service";
+import { getCategories } from "@/app/_lib/postService";
 
 async function CategoryList() {
   const {

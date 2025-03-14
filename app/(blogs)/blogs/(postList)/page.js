@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import { getPosts } from "@/app/_lib/data-service";
+import { getPosts } from "@/app/_lib/postService";
 import PostList from "@/app/_components/PostList";
 import { toPersianDigits } from "@/app/_utils/persianDigitsFormater";
 import { setCookiesOnReq } from "@/app/_utils/setCookiesOnReq";

@@ -1,7 +1,6 @@
 // import vazirFont from "@/app/_consts/fonts";
 import localFont from "next/font/local";
 import "./_styles/globals.css";
-import Header from "@/app/_components/Header";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "./_context/AuthContext";
 
@@ -51,8 +50,7 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <AuthProvider>
         <body className={`${vazirFont.variable} font-sans min-h-screen`}>
-          <Header />
-          <main className="container xl:max-w-screen-xl">{children}</main>
+          {children}
           <Toaster />
         </body>
       </AuthProvider>
