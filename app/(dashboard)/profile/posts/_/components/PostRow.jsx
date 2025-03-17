@@ -6,7 +6,7 @@ import UpdatePostBtn from "./UpdatePostBtn";
 import DeletePostBtn from "./DeletePostBtn";
 
 function PostRow({ index, post }) {
-  const { title, createdAt, author, category, type,_id } = post;
+  const { title, createdAt, author, category, type, _id } = post;
   const PostType = {
     free: { className: "badge--success", label: "رایگان" },
     premium: { className: "badge--secondary", label: "پریمیوم" },
@@ -19,12 +19,14 @@ function PostRow({ index, post }) {
       <td>{author.name}</td>
       <td>{toLocalDateShort(createdAt)}</td>
       <td>
-        <span className={`badge ${PostType[type].className}`}>{PostType[type].label}</span>
+        <span className={`badge ${PostType[type].className}`}>
+          {PostType[type].label}
+        </span>
       </td>
       <td>
         <div className="flex items-center gap-x-3">
-          <UpdatePostBtn id={_id}/>
-          <DeletePostBtn id={_id}/>
+          <UpdatePostBtn id={_id} />
+          <DeletePostBtn id={post._id} postTitle={post.title} />
         </div>
       </td>
     </Table.Row>

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./_styles/globals.css";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "./_context/AuthContext";
+import ReactQueryProvider from "./providers/ReactQueryProvider";
 
 const vazirFont = localFont({
   src: [
@@ -48,12 +49,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
-      <AuthProvider>
-        <body className={`${vazirFont.variable} font-sans min-h-screen`}>
-          {children}
-          <Toaster />
-        </body>
-      </AuthProvider>
+      <body className={`${vazirFont.variable} font-sans min-h-screen`}>
+        <ReactQueryProvider>
+          <AuthProvider>
+            {children}
+            <Toaster />
+          </AuthProvider>
+        </ReactQueryProvider>
+      </body>
     </html>
   );
 }

@@ -1,6 +1,8 @@
 /////////////
 // GET
 
+import http from "./httpService";
+
 export async function getCategories() {
   try {
     const res = await fetch(
@@ -39,4 +41,29 @@ export async function getPostBySlug(slug) {
   return post;
 }
 
+export async function createPostApi(data) {
+  return await http.post("/post/create", data).then(({ data }) => data.data);
+}
 
+export async function editPostApi({ data, id }) {
+  return await http
+    .patch(`/post/update/${id}`, data)
+    .then(({ data }) => data.data);
+}
+
+export async function getPostById(id) {
+  try {
+    const response = await http
+      .get(`/post/${id}`)
+      .then(({ data }) => data.data);
+    return response || null;
+  } catch (error) {
+    if (error.response?.status === 400 || error.response?.status === 404) {
+      return null; // بجای کرش کردن، مقدار `null` برمی‌گردانیم
+    }
+    throw error; // اگر خطا چیز دیگری بود، آن را دوباره پرتاب کن
+  }
+}
+export async function deletePostApi(id) {
+  return await http.delete(`/post/remove/${id}`).then(({ data }) => data.data);
+}
