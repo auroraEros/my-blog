@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Spinner from "@/app/_components/Spinner";
 import CategoryList from "@/app/_components/CategoryList";
 import Search from "@/app/_components/Search";
+import SortPosts from "@/app/_components/SortPosts";
 
 export const metadata = {
   title: { default: "بلاگ‌ها", template: "%s | بلاگ‌ها" },
@@ -13,6 +14,7 @@ async function Layout({ children }) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-secondary-700 mb-12 items-center">
         <h1 className="text-lg font-bold">لیست بلاگ ها</h1>
         <Search />
+        <SortPosts/>
       </div>
 
       <div className="grid grid-cols-12 gap-8">

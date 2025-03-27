@@ -11,7 +11,7 @@ function ConfirmDelete({ resourceName, onClose, disabled, onConfirm }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onConfirm();
+          onConfirm()
         }}
       >
         <div className="flex justify-between items-center gap-x-16">

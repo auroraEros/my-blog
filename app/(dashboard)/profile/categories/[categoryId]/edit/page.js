@@ -1,0 +1,30 @@
+import Breadcrumbs from "@/app/_ui/Breadcrumbs";
+import CreateCategoryForm from "../../create/_components/CreateCategoryForm";
+import { getCategoryById } from "@/app/_lib/categoryService";
+
+async function Page({ params }) {
+  const { categoryId } = await params;
+  const category=await getCategoryById(categoryId);
+  
+ 
+
+
+
+  return (
+    <div>
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: "دسته‌بندی‌ها", href: "/profile/categories" },
+          {
+            label: "ویرایش دسته‌بندی",
+            href: `/profile/categories/${categoryId}/edit`,
+            active: true,
+          },
+        ]}
+      />
+      <CreateCategoryForm categoryToEdit={category}/>
+    </div>
+  );
+}
+
+export default Page;
