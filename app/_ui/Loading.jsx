@@ -1,10 +1,11 @@
 "use client";
 
-import { ThreeDots } from "react-loader-spinner";
+import { DotLoader } from "react-spinners";
+
 
 function Loading({ width = "75", height = "40", color = "#4a6dff" }) {
   return (
-    <ThreeDots
+    <DotLoader
       height={height}
       width={width}
       radius="9"
