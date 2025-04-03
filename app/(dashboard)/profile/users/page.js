@@ -1,10 +1,12 @@
+import UsersTable from "@/app/_components/usersComponents/UsersTable"
+
 function Page() {
   return (
     <div>
-      <h1 className="text-secondary-700 text-xl font-bold">لیست کاربران</h1>
+      <h1 className="text-secondary-700 text-xl font-bold mb-8">لیست کاربران</h1>
 
       <div>
-        <CommentsTable />
+       <UsersTable/>
       </div>
     </div>
   )

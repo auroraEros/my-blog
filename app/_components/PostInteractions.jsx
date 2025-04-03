@@ -1,4 +1,6 @@
 "use client";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 import {
   BookmarkIcon,
   ChatBubbleOvalLeftEllipsisIcon,
@@ -12,9 +14,7 @@ import {
 
 import ButtonIcon from "@/app/_ui/ButtonIcon";
 import { toPersianDigits } from "@/app/_utils/persianDigitsFormater";
-import { bookmarkPostApi, likePostApi } from "../_lib/authService";
-import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { bookmarkPostApi, likePostApi } from "@/app/_lib/postService";
 
 function PostInteractions({ post }) {
   const router = useRouter();

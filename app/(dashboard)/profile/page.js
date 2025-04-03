@@ -1,11 +1,10 @@
-
 import { Suspense } from "react";
 import Fallback from "@/app/_ui/Fallback";
 import Spinner from "@/app/_components/Spinner";
-import PostTable from "./posts/_/components/PostTable";
-import CardWraper from "./_profileComponents/CardWraper";
+import CardWraper from "@/app/_components/profileComponents/CardWraper";
+import PostTable from "@/app/_components/postsComponents/PostTable";
 
-async function Page() {
+function Page() {
   return (
     <div>
       <h1 className="text-xl text-secondary-700 mb-8">داشبورد</h1>

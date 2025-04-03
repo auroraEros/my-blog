@@ -1,12 +1,12 @@
 import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
-import Avatar from "../_ui/Avatar";
-import Button from "../_ui/Button";
+import Avatar from "@/app/_ui/Avatar";
+import Button from "@/app/_ui/Button";
 
-function Comment({comment,onAddComment}) {
+function Comment({ comment, onAddComment }) {
   return (
     <>
       <div className="flex items-center justify-between mb-5 border-b border-b-secondary-200/60 pb-2">
-        <div className="flex items-center gap-x-1">
+        <div className="flex items-center ">
           <Avatar
             height={34}
             width={34}
@@ -42,4 +42,4 @@ function Comment({comment,onAddComment}) {
   );
 }
 
-export default Comment
+export default Comment;

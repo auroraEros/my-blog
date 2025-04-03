@@ -1,6 +1,7 @@
-
-import CategoriesTable from "./_components/CategoriesTable";
-import CreateCategory from "./_components/CreateCategory";
+import CategoriesTable from "@/app/_components/categoriesComponents/CategoriesTable";
+import CreateCategory from "@/app/_components/categoriesComponents/CreateCategory";
+import Fallback from "@/app/_ui/Fallback";
+import { Suspense } from "react";
 
 function Page() {
   return (
@@ -10,7 +11,9 @@ function Page() {
         <CreateCategory />
       </div>
       <div>
-        <CategoriesTable />
+        <Suspense fallback={<Fallback />}>
+          <CategoriesTable />
+        </Suspense>
       </div>
     </div>
   );

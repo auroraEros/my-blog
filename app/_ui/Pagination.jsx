@@ -1,14 +1,13 @@
 "use client";
 import Link from "next/link";
+import classNames from "classnames";
 import { usePathname, useSearchParams } from "next/navigation";
 
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-import classNames from "classnames";
-import { generatePagination } from "../_utils/generatePagination";
+import { generatePagination } from "@/app/_utils/generatePagination";
 
 
 export default function Pagination({ totalPages }) {
-  // const totalPages = Math.ceil(Number(length) / itemsPerPage);
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
@@ -34,8 +33,6 @@ export default function Pagination({ totalPages }) {
 
       <div className="flex -space-x-px">
         {allPages.map((page, index) => {
-          console.log( page);
-          // let position: "first" | "last" | "single" | "middle" | undefined;
           let position;
           if (index === 0) position = "first";
           if (index === allPages.length - 1) position = "last";
@@ -63,7 +60,6 @@ export default function Pagination({ totalPages }) {
   );
 }
 
-// position?: "first" | "last" | "middle" | "single",
 
 function PaginationNumber({ page, href, isActive, position }) {
   const className = classNames(

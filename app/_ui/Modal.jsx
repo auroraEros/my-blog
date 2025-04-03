@@ -2,7 +2,7 @@
 
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { createPortal } from "react-dom";
-import { useOutsideClick } from "../_hooks/useOutsideClick";
+import { useOutsideClick } from "@/app/_hooks/useOutsideClick";
 
 function Modal({ open, onClose, title, children, description = "" }) {
   const ref = useOutsideClick(onClose);

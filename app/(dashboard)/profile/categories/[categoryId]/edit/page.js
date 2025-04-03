@@ -1,14 +1,14 @@
+import { notFound } from "next/navigation";
 import Breadcrumbs from "@/app/_ui/Breadcrumbs";
-import CreateCategoryForm from "../../create/_components/CreateCategoryForm";
 import { getCategoryById } from "@/app/_lib/categoryService";
+import CreateCategoryForm from "@/app/_components/categoriesComponents/CreateCategoryForm";
 
 async function Page({ params }) {
   const { categoryId } = await params;
-  const category=await getCategoryById(categoryId);
   
- 
-
-
+  const category=await getCategoryById(categoryId);
+  if(!category) notFound();
+  
 
   return (
     <div>

@@ -1,5 +1,6 @@
 "use client";
 import { useAuth } from "../_context/AuthContext";
+import DarkModeToggle from "../_ui/DarkModeToggle";
 import NavLink from "./NavLink";
 
 const navLinks = [
@@ -8,9 +9,9 @@ const navLinks = [
 ];
 
 function Header() {
-  // const {isLoading,uder}=useAuth()
   const { user, isLoading } = useAuth();
-
+  const isLogin =user && Object.keys(user).length > 0 ? true : false;
+  console.log(isLogin)
   return (
     <header
       className={`z-10 shadow-md bg-inherit mb-10 sticky top-0
@@ -20,15 +21,19 @@ function Header() {
     >
       <nav className="container xl:max-w-screen-xl">
         <ul className="flex justify-between items-center text-secondary-400  py-2">
-          <div className="flex justify-between gap-x-10 ">
+          <div className="flex justify-between gap-x-10 items-center">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <NavLink path={link.path}>{link.children}</NavLink>
               </li>
             ))}
+            <li className=" flex justify-between  items-center">
+              <DarkModeToggle />
+            </li>
           </div>
+
           <li>
-            {user ? (
+            {isLogin ? (
               <NavLink path="/profile">پروفایل</NavLink>
             ) : (
               <NavLink path="/signin">ورود</NavLink>

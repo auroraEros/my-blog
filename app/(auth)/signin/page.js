@@ -1,8 +1,8 @@
 "use client";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import RHFTextField from "@/app/_ui/RHFTextField";
 import Button from "@/app/_ui/Button";
@@ -32,7 +32,7 @@ function Page() {
 
   async function onSubmit(values) {
     await signin(values);
-    // reset();
+    reset();
   }
   return (
     <div>

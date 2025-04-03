@@ -6,7 +6,7 @@ function RHFSelect({ label, name, register, options, isRequired }) {
       </label>
       <select {...register(name)} id={name} className="textField__input">
         {options.map((option) => (
-          <option  key={option.id} value={option.value}>
+          <option  key={`unique-${option.value}`} value={option.value}>
             {option.label}
           </option>
         ))}

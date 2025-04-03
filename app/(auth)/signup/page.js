@@ -5,9 +5,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import RHFTextField from "@/app/_ui/RHFTextField";
 import Button from "@/app/_ui/Button";
-
-import toast from "react-hot-toast";
-import { signupApi } from "@/app/_lib/authService";
 import { useAuth } from "@/app/_context/AuthContext";
 
 const schema = yup.object({
@@ -70,7 +67,7 @@ function Page() {
           dir="ltr"
         />
         <Button type="submit" variant="primary" className="w-full">
-          تایید
+        {isLoading ? "ثبت‌نام..." : "تایید"}
         </Button>
       </form>
       <Link href="/signin" className="text-secondary-500 mt-6 text-center">

@@ -59,11 +59,31 @@ export async function getPostById(id) {
     return response || null;
   } catch (error) {
     if (error.response?.status === 400 || error.response?.status === 404) {
-      return null; // بجای کرش کردن، مقدار `null` برمی‌گردانیم
+      return null;
     }
-    throw error; // اگر خطا چیز دیگری بود، آن را دوباره پرتاب کن
+    throw error;
   }
 }
+
+export async function getPostsByCategory(categoryId) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/post/category/${categoryId}`
+  );
+
+  const { data } = await res.json();
+
+  return data;
+}
+
 export async function deletePostApi(id) {
   return await http.delete(`/post/remove/${id}`).then(({ data }) => data.data);
+}
+export async function likePostApi(postId) {
+  return await http.post(`/post/like/${postId}`).then(({ data }) => data.data);
+}
+
+export async function bookmarkPostApi(postId) {
+  return await http
+    .post(`/post/bookmark/${postId}`)
+    .then(({ data }) => data.data);
 }

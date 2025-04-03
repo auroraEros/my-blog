@@ -1,7 +1,8 @@
+import Image from "next/image";
+import { notFound } from "next/navigation";
 import PostComment from "@/app/_components/PostComment";
 import RelatedPost from "@/app/_components/RelatedPost";
 import { getPostBySlug, getPosts } from "@/app/_lib/postService";
-import Image from "next/image";
 
 export async function generateStaticParams() {
   const {
@@ -11,9 +12,19 @@ export async function generateStaticParams() {
   return slugs;
 }
 
+export async function generateMetadata({ params }) {
+  const slug = await params.slug;
+  const post = await getPostBySlug(slug);
+  return {
+    title: `پست ${post.title}`,
+  };
+}
+
 async function Page({ params }) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
+
+  if (!post || Object.keys(post).length === 0) notFound();
 
   return (
     <div className="text-secondary-600 max-w-screen-md mx-auto">
@@ -27,6 +38,7 @@ async function Page({ params }) {
           className="object-cover object-center hover:scale-110 transition-all ease-out duration-300"
           fill
           src={post.coverImageUrl}
+          alt={`coverImage of the ${post.title}'s post `}
         />
       </div>
       {post.related.length > 0 && <RelatedPost posts={post.related} />}

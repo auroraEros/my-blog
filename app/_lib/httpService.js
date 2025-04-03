@@ -4,6 +4,7 @@ const app = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   withCredentials: true,
 });
+
 app.interceptors.request.use(
   (res) => res,
   (err) => Promise.reject(err)
@@ -18,9 +19,7 @@ app.interceptors.response.use(
       try {
         const { data } = await axios.get(
           `${process.env.NEXT_PUBLIC_BASE_URL}/user/refresh-token`,
-          {
-            withCredentials: true,
-          }
+          { withCredentials: true }
         );
         if (data) return app(originalConfig);
       } catch (error) {
@@ -33,10 +32,10 @@ app.interceptors.response.use(
 
 const http = {
   get: app.get,
-  patch: app.patch,
-  put: app.put,
-  delete: app.delete,
   post: app.post,
+  delete: app.delete,
+  put: app.put,
+  patch: app.patch,
 };
 
 export default http;

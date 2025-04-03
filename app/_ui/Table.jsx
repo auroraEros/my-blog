@@ -1,21 +1,23 @@
 function Table({ children }) {
   return (
-    <div className="bg-secondary-0 overflow-x-auto">
+    <div className="bg-secondary-0   overflow-hidden rounded-lg border border-gray-200">
       <table>{children}</table>
     </div>
   );
 }
 
-function TableHeader({ children }) {
+function TableHeader({ children,className }) {
   return (
-    <thead>
+    <thead className={className}>
       <tr className="title-row">{children}</tr>
     </thead>
   );
 }
 
-function TableBody({ children }) {
-  return <tbody>{children}</tbody>;
+function TableBody({ children ,className}) {
+  return (
+    <tbody className={className}>{children}</tbody>
+  );
 }
 
 function TableRow({ children }) {

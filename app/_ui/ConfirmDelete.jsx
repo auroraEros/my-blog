@@ -6,7 +6,7 @@ function ConfirmDelete({ resourceName, onClose, disabled, onConfirm }) {
   return (
     <div>
       <h2 className="font-bold text-base mb-8 text-secondary-700">
-        آیا از حذف {resourceName} مطمین هستید؟
+        آیا از حذف {resourceName} مطمئن هستید؟
       </h2>
       <form
         onSubmit={(e) => {

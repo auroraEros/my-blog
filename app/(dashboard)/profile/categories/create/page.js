@@ -1,5 +1,5 @@
+import CreateCategoryForm from "@/app/_components/categoriesComponents/CreateCategoryForm";
 import Breadcrumbs from "@/app/_ui/Breadcrumbs";
-import CreateCategoryForm from "./_components/CreateCategoryForm";
 
 async function Page() {
   return (

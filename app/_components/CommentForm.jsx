@@ -1,17 +1,18 @@
 "use client";
 import { useActionState, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import SubmitButton from "@/app/_ui/SubmitButton";
 import TextArea from "@/app/_ui/TextArea";
 import { createComment } from "@/app/_lib/actions";
-import toast from "react-hot-toast";
 
 const initialState = {
   error: "",
   message: "",
 };
+
 function CommentForm({ postId, parentId, onClose }) {
   const [text, setText] = useState("");
-  const [state, formAction] = useActionState(createComment, initialState);
+  const [state, formAction] = useActionState(createComment, initialState); 
   useEffect(() => {
     if (state?.message) {
       toast.success(state.message);
@@ -28,7 +29,6 @@ function CommentForm({ postId, parentId, onClose }) {
         <div className="max-w-md  w-full">
           <form
             className="space-y-7"
-            //  action={createComment.bind(null, postId, parentId)}
             action={async (formData) => {
               await formAction({ formData, postId, parentId });
             }}
@@ -47,5 +47,4 @@ function CommentForm({ postId, parentId, onClose }) {
     </div>
   );
 }
-
 export default CommentForm;

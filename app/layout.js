@@ -1,9 +1,10 @@
 // import vazirFont from "@/app/_consts/fonts";
+import { Toaster } from "react-hot-toast";
 import localFont from "next/font/local";
 import "./_styles/globals.css";
-import { Toaster } from "react-hot-toast";
 import AuthProvider from "./_context/AuthContext";
 import ReactQueryProvider from "./providers/ReactQueryProvider";
+import { DarkModeProvider } from "./_context/DarkModeContext";
 
 const vazirFont = localFont({
   src: [
@@ -41,7 +42,7 @@ const vazirFont = localFont({
 export const metadata = {
   title: {
     template: "%s | بلااگ اپ",
-    default: "بلاگ اپ", // a default is required when creating a template
+    default: "بلاگ اپ",
   },
   description: "وب اپلیکیشن مدیریت بلاگ ها و نظرات کاربران",
 };
@@ -50,12 +51,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body className={`${vazirFont.variable} font-sans min-h-screen`}>
-        <ReactQueryProvider>
-          <AuthProvider>
-            {children}
-            <Toaster />
-          </AuthProvider>
-        </ReactQueryProvider>
+        <DarkModeProvider>
+          <ReactQueryProvider>
+            <AuthProvider>
+              {children}
+              <Toaster />
+            </AuthProvider>
+          </ReactQueryProvider>
+        </DarkModeProvider>
       </body>
     </html>
   );

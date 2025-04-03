@@ -1,5 +1,5 @@
+import CreatePostForm from "@/app/_components/postsComponents/CreatePostForm";
 import Breadcrumbs from "@/app/_ui/Breadcrumbs";
-import CreatePostForm from "./_/components/CreatePostForm";
 
 async function Page() {
   return (

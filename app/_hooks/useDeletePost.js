@@ -1,6 +1,6 @@
+import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { deletePostApi } from "@/app/_lib/postService";
-import toast from "react-hot-toast";
 
 export function useDeletePost() {
   const queryClient = useQueryClient();

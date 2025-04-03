@@ -1,7 +1,7 @@
-import { getPostById } from "@/app/_lib/postService";
-import CreatePostForm from "../../create/_/components/CreatePostForm";
-import Breadcrumbs from "@/app/_ui/Breadcrumbs";
 import { notFound } from "next/navigation";
+import { getPostById } from "@/app/_lib/postService";
+import Breadcrumbs from "@/app/_ui/Breadcrumbs";
+import CreatePostForm from "@/app/_components/postsComponents/CreatePostForm";
 
 async function Page({ params }) {
   const { postId } = await params;
