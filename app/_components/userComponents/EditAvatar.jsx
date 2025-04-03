@@ -1,20 +1,15 @@
 "use client";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { Controller, useForm } from "react-hook-form";
 import { useAuth } from "@/app/_context/AuthContext";
 import { useUploadAvatar } from "@/app/_hooks/useUploadAvatar";
-import { revalidateUser, updateAvatar } from "@/app/_lib/actions";
-import { getUserApi } from "@/app/_lib/authService";
 import Avatar from "@/app/_ui/Avatar";
 import Button from "@/app/_ui/Button";
 import ButtonIcon from "@/app/_ui/ButtonIcon";
 import FileInput from "@/app/_ui/FileInput";
 import Modal from "@/app/_ui/Modal";
 import { imageUrlToFile } from "@/app/_utils/fileFormatter";
-import { CameraIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 
 function EditAvatar({ user }) {
   const { avatar, avatarUrl: prevAvatarUrl } = user;
@@ -75,15 +70,12 @@ function EditAvatar({ user }) {
 
     uploadAvatar(formData, {
       onSuccess: async (newUserData) => {
-        // مقدار user را آپدیت می‌کنیم
-
         await updateUser(newUserData);
-        setAvatarUrl(newUserData.avatarUrl); // مقدار state محلی را هم به‌روز می‌کنیم
-        // console.log("newUserData:", newUserData);
-        router.replace(router.asPath); // رفرش بدون فلش صفحه
+        setAvatarUrl(newUserData.avatarUrl);
+        router.refresh();
       },
     });
-    router.replace(router.asPath);
+    router.refresh();
     setOpenModal(false);
   }
   return (
