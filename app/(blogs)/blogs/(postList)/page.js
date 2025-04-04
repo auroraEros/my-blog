@@ -16,7 +16,7 @@ async function Page({ searchParams }) {
     const response = await getPosts(queries, option);
 
     if (!response || !response.data || !response.data.posts) {
-      return notFound();
+      return null;
     }
 
     const { data } = response;

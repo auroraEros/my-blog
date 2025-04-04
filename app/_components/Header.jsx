@@ -11,7 +11,6 @@ const navLinks = [
 function Header() {
   const { user, isLoading } = useAuth();
   const isLogin =user && Object.keys(user).length > 0 ? true : false;
-  console.log(isLogin)
   return (
     <header
       className={`z-10 shadow-md bg-inherit mb-10 sticky top-0
