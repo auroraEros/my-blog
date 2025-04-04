@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const slug = await params.slug;
+  const slug =  params.slug;
   const post = await getPostBySlug(slug);
   return {
     title: `پست ${post.title}`,
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
 }
 
 async function Page({ params }) {
-  const { slug } = await params;
+  const { slug } = params || "";
   const post = await getPostBySlug(slug);
 
   if (!post || Object.keys(post).length === 0) notFound();

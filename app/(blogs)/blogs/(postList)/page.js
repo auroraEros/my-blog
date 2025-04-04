@@ -9,7 +9,7 @@ import Pagination from "@/app/_ui/Pagination";
 
 async function Page({ searchParams }) {
   try {
-    const cookieStore = await cookies();
+    const cookieStore =  cookies();
     const option = setCookiesOnReq(cookieStore);
 
     const queries = queryString.stringify({ ...searchParams });

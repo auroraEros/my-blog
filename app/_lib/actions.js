@@ -35,7 +35,7 @@ export async function createComment(prevState, { formData, postId, parentId }) {
 }
 
 export async function updateComment(prevState, { commentId, formData }) {
-  const cookieStore = await cookies();
+  const cookieStore =  cookies();
 
   const data = {
     status: formData.get("status"),
@@ -64,7 +64,7 @@ export async function updateComment(prevState, { commentId, formData }) {
 }
 
 export async function deleteComment(prevState, { commentId }) {
-  const cookieStore = await cookies();
+  const cookieStore =  cookies();
 
   try {
     const options = setCookiesOnReq(cookieStore);
@@ -85,24 +85,4 @@ export async function deleteComment(prevState, { commentId }) {
   }
 }
 
-export async function updateAvatar() {
-  const cookieStore = await cookies();
 
-  try {
-    const options = setCookiesOnReq(cookieStore);
-    const { message } = await getUserApi();
-
-    revalidatePath("/profile/user");
-
-    return {
-      message,
-    };
-  } catch (err) {
-    const error = err?.response?.data?.message;
-    console.log({ error });
-
-    return {
-      error,
-    };
-  }
-}

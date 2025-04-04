@@ -5,7 +5,7 @@ import { getAllCommentsApi } from "./commentService";
 import { getPosts } from "./postService";
 
 export async function fetchCardsData() {
-  const cookieStore = await cookies();
+  const cookieStore =  cookies();
   const options = setCookiesOnReq(cookieStore);
   try {
     const data = await Promise.all([

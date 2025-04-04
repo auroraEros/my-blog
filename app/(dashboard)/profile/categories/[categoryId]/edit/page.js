@@ -4,7 +4,7 @@ import { getCategoryById } from "@/app/_lib/categoryService";
 import CreateCategoryForm from "@/app/_components/categoriesComponents/CreateCategoryForm";
 
 async function Page({ params }) {
-  const { categoryId } = await params;
+  const { categoryId } = params;
   
   const category=await getCategoryById(categoryId);
   if(!category) notFound();

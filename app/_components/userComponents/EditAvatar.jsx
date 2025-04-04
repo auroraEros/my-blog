@@ -10,6 +10,8 @@ import ButtonIcon from "@/app/_ui/ButtonIcon";
 import FileInput from "@/app/_ui/FileInput";
 import Modal from "@/app/_ui/Modal";
 import { imageUrlToFile } from "@/app/_utils/fileFormatter";
+import { useEffect, useState } from "react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 function EditAvatar({ user }) {
   const { avatar, avatarUrl: prevAvatarUrl } = user;
