@@ -16,18 +16,10 @@ export async function getCategories() {
   }
 }
 
-export async function getPosts(queries, option) {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/post/list?${queries}`,
-      option
-    );
-    if (!res.ok) throw new Error("Couldn't get posts");
-    const data = await res.json();
-    return data;
-  } catch (err) {
-    console.log(err.message);
-  }
+export async function getAllPostsApi(queries, options = {}) {
+  return http
+    .get(`/post/list?${queries}`, options)
+    .then(({ data }) => data.data);
 }
 
 export async function getPostBySlug(slug) {
@@ -65,15 +57,13 @@ export async function getPostById(id) {
   }
 }
 
-export async function getPostsByCategory(categoryId) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/post/category/${categoryId}`
-  );
+// export async function getPostsByCategory(categoryId) {
+//   const res = await http.get(`/post/category/${categoryId}`);
 
-  const { data } = await res.json();
+//   const { data } = await res.json();
 
-  return data;
-}
+//   return data;
+// }
 
 export async function deletePostApi(id) {
   return await http.delete(`/post/remove/${id}`).then(({ data }) => data.data);

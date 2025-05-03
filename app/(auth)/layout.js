@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Auth",
+  description: "Auth",
+};
 function Layout({ children }) {
   return (
     <div className="flex items-center justify-center">

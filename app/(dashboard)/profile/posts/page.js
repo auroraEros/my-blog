@@ -5,20 +5,15 @@ import queryString from "query-string";
 import Spinner from "@/app/_components/Spinner";
 import Search from "@/app/_components/Search";
 import Pagination from "@/app/_ui/Pagination";
-import { getPosts } from "@/app/_lib/postService";
 import CreatePost from "@/app/_components/postsComponents/CreatePost";
 import PostTable from "@/app/_components/postsComponents/PostTable";
+import { getAllPostsApi, getPosts } from "@/app/_lib/postService";
 
 async function Page({ searchParams }) {
   try {
     const query = queryString.stringify(searchParams);
 
-    const response = await getPosts(query);
-    if (!response || !response?.data) {
-      console.error("پاسخ نامعتبر از سرور:", response);
-      notFound();
-    }
-    const totalPages = response?.data?.totalPages || 1;
+  const { totalPages } = await getAllPostsApi(query);
 
     return (
       <div>

@@ -1,20 +1,11 @@
-import { getPosts } from "@/app/_lib/postService";
+import { getAllPostsApi, getPosts } from "@/app/_lib/postService";
 import Empty from "@/app/_ui/Empty";
 import Table from "@/app/_ui/Table";
 import PostRow from "./PostRow";
 
 async function PostTable({ query = "" }) {
   try {
-    const response = await getPosts(query);
-
-    if (!response?.data?.posts) {
-      console.error("ساختار پاسخ نامعتبر:", response);
-      return (
-        <Empty resourceName="پستی" message="ساختار داده دریافتی نامعتبر است" />
-      );
-    }
-
-    const { posts } = response.data;
+    const { posts } = await getAllPostsApi(query);
 
     if (!posts.length) {
       return (
