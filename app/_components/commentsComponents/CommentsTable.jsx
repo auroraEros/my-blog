@@ -12,7 +12,7 @@ async function CommentsTable() {
       notFound();
     }
 
-    const { comments } = response;
+    const { comments } = response || [];
 
     if (!comments.length) {
       return (

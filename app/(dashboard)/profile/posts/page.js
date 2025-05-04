@@ -7,7 +7,7 @@ import Search from "@/app/_components/Search";
 import Pagination from "@/app/_ui/Pagination";
 import CreatePost from "@/app/_components/postsComponents/CreatePost";
 import PostTable from "@/app/_components/postsComponents/PostTable";
-import { getAllPostsApi, getPosts } from "@/app/_lib/postService";
+import { getAllPostsApi } from "@/app/_lib/postService";
 
 async function Page({ searchParams }) {
   try {
