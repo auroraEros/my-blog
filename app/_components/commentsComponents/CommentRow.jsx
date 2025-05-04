@@ -27,12 +27,12 @@ function CommentRow({ comment, index }) {
   return (
     <Table.Row>
       <td>{toPersianDigits(index + 1)}</td>
-      <td>{truncateText(content.text, 30)}</td>
-      <td>{user.name || "user"}</td>
+      <td>{truncateText(content?.text, 30)}</td>
+      <td>{user?.name || "سحر"}</td>
       <td>{toLocalDateShort(createdAt)}</td>
       <td>
-        <span className={`badge ${commentStatus[status].className}`}>
-          {`${commentStatus[status].label}`}
+        <span className={`badge ${commentStatus[status]?.className}`}>
+          {`${commentStatus[status]?.label}`}
         </span>
       </td>
       <td>
