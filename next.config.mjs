@@ -6,14 +6,18 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
+        protocol: "https",
         hostname: "localhost",
         port: "5000",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "tender-electra-auroraeros-a2c6771e.koyeb.app",
+        pathname: "/uploads/**",
+      },
     ],
-
-    domains: ["localhost"],
+    domains: ["localhost", "tender-electra-auroraeros-a2c6771e.koyeb.app"],
   },
 };
 
