@@ -7,7 +7,8 @@ import DeleteCommentBtn from "./DeleteCommentBtn";
 
 
 function CommentRow({ comment, index }) {
-  const { content, _id, user, post, status, answers, createdAt } = comment;
+
+  const { content, _id, user, status, createdAt } = comment;
   const commentStatus = [
     {
       label: "رد شده",
@@ -27,7 +28,7 @@ function CommentRow({ comment, index }) {
     <Table.Row>
       <td>{toPersianDigits(index + 1)}</td>
       <td>{truncateText(content.text, 30)}</td>
-      <td>{user.name}</td>
+      <td>{user.name || "user"}</td>
       <td>{toLocalDateShort(createdAt)}</td>
       <td>
         <span className={`badge ${commentStatus[status].className}`}>
