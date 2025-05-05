@@ -17,7 +17,7 @@ app.interceptors.response.use(
       originalConfig._retry = true;
       try {
         const { data } = await axios.get(
-          `api/user/refresh-token`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/refresh-token`,
           { withCredentials: true }
         );
         if (data) return app(originalConfig);
