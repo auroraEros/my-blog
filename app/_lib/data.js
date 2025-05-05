@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { getAllUsersApi } from "./authService";
 import { setCookiesOnReq } from "../_utils/setCookiesOnReq";
 import { getAllCommentsApi } from "./commentService";
-import { getAllPostsApi, getPosts } from "./postService";
+import { getAllPostsApi } from "./postService";
 
 export async function fetchCardsData() {
   const cookieStore = cookies();
