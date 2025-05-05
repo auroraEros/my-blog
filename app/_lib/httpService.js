@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const app = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: "/api",
   withCredentials: true,
 });
 app.interceptors.request.use(
@@ -17,7 +17,7 @@ app.interceptors.response.use(
       originalConfig._retry = true;
       try {
         const { data } = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/user/refresh-token`,
+          `api/user/refresh-token`,
           { withCredentials: true }
         );
         if (data) return app(originalConfig);

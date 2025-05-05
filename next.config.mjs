@@ -19,7 +19,14 @@ const nextConfig = {
     ],
     domains: ["localhost", "tender-electra-auroraeros-a2c6771e.koyeb.app"],
   },
-
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://tender-electra-auroraeros-a2c6771e.koyeb.app/api/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
