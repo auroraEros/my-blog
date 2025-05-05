@@ -1,4 +1,4 @@
-import { getAllPostsApi } from "@/app/_lib/postService";
+import { getAllPostsApi, getPosts } from "@/app/_lib/postService";
 import Empty from "@/app/_ui/Empty";
 import Table from "@/app/_ui/Table";
 import PostRow from "./PostRow";

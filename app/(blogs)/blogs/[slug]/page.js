@@ -2,11 +2,11 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import PostComment from "@/app/_components/PostComment";
 import RelatedPost from "@/app/_components/RelatedPost";
-import { getAllPostsApi, getPostBySlug,  } from "@/app/_lib/postService";
+import { getPostBySlug, getPosts } from "@/app/_lib/postService";
 
 export async function generateStaticParams() {
   try {
-    const response = await getAllPostsApi();
+    const response = await getPosts();
     
     if (!response?.data?.posts) {
       console.error('Invalid posts response:', response);

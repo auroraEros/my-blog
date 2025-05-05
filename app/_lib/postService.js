@@ -6,8 +6,7 @@ import http from "./httpService";
 export async function getCategories() {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/category/list`,
-      { credentials: "include" }
+      `${process.env.NEXT_PUBLIC_BASE_URL}/category/list`
     );
     if (!res.ok) throw new Error("Couldn't get categories");
     const data = await res.json();
@@ -25,8 +24,7 @@ export async function getAllPostsApi(queries, options = {}) {
 
 export async function getPostBySlug(slug) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/post/slug/${slug}`,
-    { credentials: "include" }
+    `${process.env.NEXT_PUBLIC_BASE_URL}/post/slug/${slug}`
   );
 
   const { data } = await res.json();

@@ -6,7 +6,7 @@ async function Page({ params, searchParams }) {
   console.log(categorySlug)
   const queries = queryString.stringify(searchParams);
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/post/list?categorySlug=${categorySlug}&${queries}`
+    `http://localhost:5000/api/post/list?categorySlug=${categorySlug}&${queries}`
   );
   const { data } = await res.json();
   const posts = data ? data.posts : [];
