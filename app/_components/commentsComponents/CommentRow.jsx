@@ -7,7 +7,7 @@ import DeleteCommentBtn from "./DeleteCommentBtn";
 
 
 function CommentRow({ comment, index }) {
-  const { content, _id, user, post, status, answers, createdAt } = comment;
+  const { content, _id, user, status, createdAt } = comment;
   const commentStatus = [
     {
       label: "رد شده",
